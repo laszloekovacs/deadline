@@ -15,7 +15,7 @@
 
         img[src="img/grim.jpg"] {
             max-width: 70px;
-            margin: 22px auto;
+            margin: 10px auto 4px;
         }
 
         img[src="img/transam.jpg"] {
@@ -28,15 +28,23 @@
         main { 
             display: flex;
             flex-flow: column;
-            
         }
 
-        p, h1, h2 {
+        p, h1, h2, ul {
             margin: 7px auto 7px auto;
         }
 
         h1 {
             font-size: 2.8em;
+        }
+
+        hr {
+            width: 450px;
+            margin: auto;
+        }
+
+        ul {
+            columns: 2;
         }
 
     </style>
@@ -48,10 +56,22 @@
         <h2 id="target">🕐</h2>
         <p>is closing in fast. According to plan, you have</p>
         <h1 id="timer">🕐</h1>
-        <p>time left. So get on with it</p>
+        <hr>
+        <h2>You have plenty of tasks to master</h2>
+        <ul>
+            <li>Javascript</li>
+            <li>Typescript</li>
+            <li>node</li>
+            <li>express</li>
+            <li>React</li>
+            <li>PosgreSQL</li>
+            <li>html / css</li>
+            <li>algorithms, http, ssl</li>
+        </ul>
+        <p>so get on with it</p>
+        <hr>
         <img src="img/transam.jpg">
     </main>
-
     <script>
 
         // the deadline
