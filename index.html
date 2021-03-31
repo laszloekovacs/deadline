@@ -30,7 +30,7 @@
             flex-flow: column;
         }
 
-        p, h1, h2, ul {
+        p, h1, h2, ul, progress {
             margin: 7px auto 7px auto;
         }
 
@@ -47,6 +47,12 @@
             columns: 2;
         }
 
+        progress {
+            width: 200px;
+            height: 20px;
+            
+        }
+
     </style>
 
 </head>
@@ -56,6 +62,7 @@
         <h2 id="target">🕐</h2>
         <p>is closing in fast. According to plan, you have</p>
         <h1 id="timer">🕐</h1>
+        <progress max=80></progress>
         <hr>
         <h2>You have plenty of tasks to master</h2>
         <ul>
@@ -73,7 +80,6 @@
         <img src="img/transam.jpg">
     </main>
     <script>
-
         // the deadline
         let deadLine = new Date("June 15, 2021 20:00:00 GMT+1").getTime();
         document.querySelector("#target").textContent = new Date(deadLine).toDateString();
@@ -93,6 +99,16 @@
 
             document.querySelector('#timer').textContent = days +"d " + hours + "h "
             + minutes + "m " + seconds + "s"; 
+
+            let progress = document.querySelector('progress');
+            let daysleft = 80 - days;
+            // progress bar
+            if(days > 0) {
+                progress.value = daysleft;
+            } else {
+                progress.value = 0;
+            }
+
         }, 1000);
     </script>
 </body>
