@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,12 +26,17 @@
             border-radius: 2px;
         }
 
-        main { 
+        main {
             display: flex;
             flex-flow: column;
+            align-content: center;
         }
 
-        p, h1, h2, ul, progress {
+        p,
+        h1,
+        h2,
+        ul,
+        progress {
             margin: 7px auto 7px auto;
         }
 
@@ -50,19 +56,25 @@
         progress {
             width: 200px;
             height: 20px;
-            
-        }
 
+        }
     </style>
 
 </head>
+
 <body>
     <main>
         <img src="img/grim.jpg">
         <h2 id="target">🕐</h2>
         <p>is closing in fast. According to plan, you have</p>
         <h1 id="timer">🕐</h1>
-        <progress max=80></progress>
+        <progress max=80 style="display: none;"></progress>
+        <p>
+            <svg id="progressbar" width="164" height="12">
+                <rect x="1" y="1" width="162" height="10" style="fill:black"></rect>
+                <rect id="progress" x="2" y="2" width="160" height="8" style="fill:orange"></rect>
+            </svg>
+        </p>
         <hr>
         <h2>You have plenty of tasks to master</h2>
         <ul>
@@ -83,9 +95,9 @@
         // the deadline
         let deadLine = new Date("June 15, 2021 20:00:00 GMT+1").getTime();
         document.querySelector("#target").textContent = new Date(deadLine).toDateString();
-        
+
         let timer = document.querySelector('#timer');
-        
+
         setInterval(() => {
 
             // update time left
@@ -97,19 +109,33 @@
             let minutes = Math.floor((delta % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((delta % (1000 * 60)) / 1000);
 
-            document.querySelector('#timer').textContent = days +"d " + hours + "h "
-            + minutes + "m " + seconds + "s"; 
+            document.querySelector('#timer').textContent = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s";
 
             let progress = document.querySelector('progress');
             let daysleft = 80 - days;
             // progress bar
-            if(days > 0) {
+            if (days > 0) {
                 progress.value = daysleft;
             } else {
                 progress.value = 0;
             }
 
+            const max = 80*2;
+            const value = days;
+            const percent = (value / 100) * max;
+
+            const bar = document.getElementById('progress');
+            console.log(percent);
+            bar.style.fill = "orange";
+            bar.style.width = `${percent}px`;
         }, 1000);
     </script>
+
+    <script>
+
+
+    </script>
 </body>
+
 </html>
